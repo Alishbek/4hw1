@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/boardFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.a4hw1.HomeFragment"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" />
+    <fragment
+        android:id="@+id/createTaskFragment"
+        android:name="com.example.a4hw1.CreateTaskFragment"
+        android:label="fragment_create_task2"
+        tools:layout="@layout/fragment_create_task2" />
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.example.a4hw1.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" >
+        <action
+            android:id="@+id/action_boardFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_graph.xml"/>
+    </fragment>
+</navigation>
