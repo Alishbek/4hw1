@@ -11,12 +11,16 @@
         android:id="@+id/taskEd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="task"
+        android:hint="Введите задачу"
+        android:padding="12dp"
+        android:textAlignment="center"
+        android:background="@drawable/violet_rectangle"
         android:textColor="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
         android:orientation="horizontal">
 
         <Button
@@ -24,21 +28,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="date" />
+            android:layout_marginEnd="10dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/violet_rectangle"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:text="дата" />
 
         <Button
             android:id="@+id/regularBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="regular" />
+            android:layout_marginStart="10dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/violet_rectangle"
+            android:drawableEnd="@drawable/ic_arrow_down"
+            android:text="регулярность" />
 
     </LinearLayout>
 
     <Button
+        android:layout_marginTop="26dp"
         android:id="@+id/applyBtn"
-        android:layout_width="match_parent"
+        android:background="@drawable/violet_rectangle_solid"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="принять" />
+        android:text="принять"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

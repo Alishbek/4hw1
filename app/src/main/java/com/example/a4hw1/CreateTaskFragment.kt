@@ -3,7 +3,6 @@ package com.example.a4hw1
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,10 @@ import android.view.Window
 import androidx.navigation.fragment.findNavController
 import com.example.a4hw1.databinding.FragmentCreateTask2Binding
 import com.example.a4hw1.databinding.RegularDialogBinding
+import com.example.a4hw1.room.TaskModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import okhttp3.internal.concurrent.Task
 import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
 
 
 class CreateTaskFragment : BottomSheetDialogFragment() {
@@ -21,6 +21,7 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
     var task = ""
     var date = ""
     var regular = ""
+    var taskModel: TaskModel? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +33,15 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClicker()
+        if (tag == "update") {
+            arguments?.let {
+                taskModel = it.getSerializable("model") as TaskModel
+
+                binding.taskEd.setText(taskModel!!.task)
+                binding.dateBtn.text = taskModel!!.date
+                binding.regularBtn.text = taskModel!!.regular
+            }
+        }
     }
 
     private fun showRegularDialog() {
@@ -44,7 +54,7 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
             this.binding.regularBtn.text = regular
             dialog.dismiss()
         }
-        binding.cancelBtn.setOnClickListener{
+        binding.cancelBtn.setOnClickListener {
             dialog.dismiss()
         }
         dialog.show()
@@ -54,9 +64,21 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
     private fun initClicker() {
         with(binding) {
             applyBtn.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putSerializable("model", TaskModel(taskEd.text.toString(), date, regular))
-                findNavController().navigate(R.id.homeFragment, bundle)
+                if (tag == "update") {
+                    val model = TaskModel(
+                        id = taskModel!!.id,
+                        task = taskEd.text.toString(),
+                        date = dateBtn.text.toString(),
+                        regular = regularBtn.text.toString()
+                    )
+                    App.appDataDataBase.taskDao().update(model)
+                }  else {
+                    val model =
+                        TaskModel(task = taskEd.text.toString(), date = date, regular = regular)
+                    App.appDataDataBase.taskDao().insert(model)
+
+                }
+                dismiss()
             }
             regularBtn.setOnClickListener {
                 showRegularDialog()
@@ -73,7 +95,7 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
                     DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                         // Display Selected date in textbox
-                        dateBtn.text = "$dayOfMonth.${monthOfYear+1}.$year"
+                        dateBtn.text = "$dayOfMonth.${monthOfYear + 1}.$year"
                         date = dateBtn.text.toString()
                     },
                     year,

@@ -27,4 +27,9 @@
             app:popUpToInclusive="true"
             app:popUpTo="@id/nav_graph.xml"/>
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.a4hw1.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

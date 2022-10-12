@@ -1,5 +1,6 @@
 package com.example.a4hw1
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.a4hw1.databinding.FragmentBoardBinding
 import com.example.a4hw1.databinding.ItemBoardBinding
+import com.example.a4hw1.room.TaskModel
 
 
 class BoardFragment : Fragment(), ItemClickListener {
@@ -32,15 +34,23 @@ class BoardFragment : Fragment(), ItemClickListener {
         val boardAdapter = BoardAdapter(list, this)
         binding.viewPager.adapter = boardAdapter
         binding.dotsIndicator.attachTo(binding.viewPager)
+
+        val preferences = requireContext().getSharedPreferences("setting", Context.MODE_PRIVATE)
+        val isShow: Boolean = preferences.getBoolean("isShow", false)
+        if (isShow){
+            findNavController().navigate(R.id.action_boardFragment_to_homeFragment)
+        }
     }
 
     override fun itemClick() {
+        val preferences = requireContext().getSharedPreferences("setting", Context.MODE_PRIVATE)
+        preferences.edit().putBoolean("isShow", true).apply()
         findNavController().navigate(R.id.action_boardFragment_to_homeFragment)
     }
 
 
-    override fun pageClick(number:Int) {
-       binding.viewPager.setCurrentItem(number)
+    override fun pageClick(number: Int) {
+        binding.viewPager.setCurrentItem(number)
     }
 
 
