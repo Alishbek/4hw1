@@ -13,9 +13,9 @@ class BoardAdapter(
     inner class BoardViewHolder(private val binding: ItemBoardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(boardModel: BoardModel) {
-            binding.imageView.load(boardModel.image)
             binding.nextBtn.text = boardModel.button
             binding.descriptionView.text = boardModel.description
+            binding.lottieView.setAnimation(boardModel.animation)
             binding.nextBtn.setOnClickListener {
                 if (adapterPosition == list.size - 1) {
                     listener.itemClick()

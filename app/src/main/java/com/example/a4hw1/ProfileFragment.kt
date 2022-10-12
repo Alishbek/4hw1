@@ -34,7 +34,7 @@ class ProfileFragment : Fragment() {
         (requireActivity() as MainActivity).binding.titleTv.text = "Профиль"
         (requireActivity() as MainActivity).binding.profileImage.load(R.drawable.ic_task)
         (requireActivity() as MainActivity).binding.profileImage.setOnClickListener {
-            findNavController().navigate(R.id.homeFragment)
+            findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
         }
 
 //        val preferences = requireContext().getSharedPreferences("gallery", Context.MODE_PRIVATE)

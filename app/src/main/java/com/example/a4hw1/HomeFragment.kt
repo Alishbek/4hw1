@@ -1,13 +1,16 @@
 package com.example.a4hw1
 
+import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.Interpolator
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import coil.load
@@ -46,10 +49,31 @@ class HomeFragment : Fragment(), TaskClickListener {
     private fun initClicker() {
         binding.createFab.setOnClickListener {
             CreateTaskFragment().show(requireActivity().supportFragmentManager, "")
+//            doBounceAnimation(it)
+//            val bounceAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim)
+//            (requireActivity() as MainActivity).binding.toolBar.startAnimation(bounceAnimation)
         }
         (requireActivity() as MainActivity).binding.profileImage.setOnClickListener {
-            findNavController().navigate(R.id.profileFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
+    }
+
+    private fun doBounceAnimation(targetView: View) {
+        val interpolator: Interpolator = object : Interpolator {
+            override fun getInterpolation(v: Float): Float {
+                return getPowOut(v, 2.0) //Add getPowOut(v,3); for more up animation
+            }
+        }
+        val animator = ObjectAnimator.ofFloat(targetView, "translationY", 0f, 25f, 0f)
+        animator.interpolator = interpolator
+        animator.startDelay = 200
+        animator.duration = 800
+        animator.repeatCount = 5
+        animator.start()
+    }
+
+    private fun getPowOut(elapsedTimeRate: Float, pow: Double): Float {
+        return (1f - Math.pow((1 - elapsedTimeRate).toDouble(), pow)).toFloat()
     }
 
     private fun showDialog(

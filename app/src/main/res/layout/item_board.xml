@@ -6,11 +6,13 @@
     android:background="@color/purple_500"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@color/black"
+        app:lottie_fileName="first_anim.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +27,7 @@
         android:text="description"
         android:textColor="@color/white"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/lottieView" />
 
     <Button
         android:paddingHorizontal="30dp"

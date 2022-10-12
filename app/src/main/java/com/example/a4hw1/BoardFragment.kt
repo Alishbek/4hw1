@@ -28,9 +28,9 @@ class BoardFragment : Fragment(), ItemClickListener {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).hideToolBar()
         val list = arrayListOf<BoardModel>()
-        list.add(BoardModel(R.drawable.board_first, "Экономь время", "Дальше"))
-        list.add(BoardModel(R.drawable.board_second, "Достигай целей", "Дальше"))
-        list.add(BoardModel(R.drawable.board_third, "Развивайся", "Начинаем"))
+        list.add(BoardModel("first_anim.json", "Экономь время", "Дальше"))
+        list.add(BoardModel("second_anim.json", "Достигай целей", "Дальше"))
+        list.add(BoardModel("third_anim.json", "Развивайся", "Начинаем"))
         val boardAdapter = BoardAdapter(list, this)
         binding.viewPager.adapter = boardAdapter
         binding.dotsIndicator.attachTo(binding.viewPager)

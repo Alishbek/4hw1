@@ -9,7 +9,13 @@
         android:id="@+id/homeFragment"
         android:name="com.example.a4hw1.HomeFragment"
         android:label="fragment_home2"
-        tools:layout="@layout/fragment_home2" />
+        tools:layout="@layout/fragment_home2" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left" />
+    </fragment>
     <fragment
         android:id="@+id/createTaskFragment"
         android:name="com.example.a4hw1.CreateTaskFragment"
@@ -31,5 +37,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.a4hw1.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left" />
+    </fragment>
 </navigation>
