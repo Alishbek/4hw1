@@ -44,4 +44,14 @@
             app:enterAnim="@android:anim/slide_out_right"
             app:exitAnim="@android:anim/slide_in_left" />
     </fragment>
+    <fragment
+        android:id="@+id/registrationNumberFragment"
+        android:name="com.example.a4hw1.RegistrationNumberFragment"
+        android:label="fragment_registration_number"
+        tools:layout="@layout/fragment_registration_number" />
+    <fragment
+        android:id="@+id/startRegistrationFragment"
+        android:name="com.example.a4hw1.StartRegistrationFragment"
+        android:label="fragment_start_registration"
+        tools:layout="@layout/fragment_start_registration" />
 </navigation>

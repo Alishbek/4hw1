@@ -38,14 +38,14 @@ class BoardFragment : Fragment(), ItemClickListener {
         val preferences = requireContext().getSharedPreferences("setting", Context.MODE_PRIVATE)
         val isShow: Boolean = preferences.getBoolean("isShow", false)
         if (isShow){
-            findNavController().navigate(R.id.action_boardFragment_to_homeFragment)
+            findNavController().navigate(R.id.startRegistrationFragment)
         }
     }
 
     override fun itemClick() {
         val preferences = requireContext().getSharedPreferences("setting", Context.MODE_PRIVATE)
         preferences.edit().putBoolean("isShow", true).apply()
-        findNavController().navigate(R.id.action_boardFragment_to_homeFragment)
+        findNavController().navigate(R.id.startRegistrationFragment)
     }
 
 

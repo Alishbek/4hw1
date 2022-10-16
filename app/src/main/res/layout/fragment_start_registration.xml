@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lifetrack"
+    tools:context=".StartRegistrationFragment">
+
+
+    <ImageView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="612dp"
+        android:layout_height="468dp"
+        android:src="@drawable/vector_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        app:layout_constraintTop_toTopOf="@id/appTv"
+        app:layout_constraintEnd_toStartOf="@id/appTv"
+        app:layout_constraintBottom_toBottomOf="@id/appTv"
+        android:src="@drawable/flame"
+        android:layout_width="48dp"
+        android:layout_height="48dp"/>
+
+    <TextView
+        android:layout_marginStart="20dp"
+        android:paddingStart="12dp"
+        android:id="@+id/appTv"
+        android:layout_marginTop="172dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LifeTrack"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/registrationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/violet_rectangle_solid"
+        android:backgroundTint="@color/app_purple"
+        android:paddingHorizontal="15dp"
+        android:text="зарегистрироваться"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,6 +54,21 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
             this.binding.regularBtn.text = regular
             dialog.dismiss()
         }
+        binding.everyWeekBtn.setOnClickListener {
+            regular = binding.everyWeekBtn.text.toString()
+            this.binding.regularBtn.text = regular
+            dialog.dismiss()
+        }
+        binding.everyMonthBtn.setOnClickListener {
+            regular = binding.everyMonthBtn.text.toString()
+            this.binding.regularBtn.text = regular
+            dialog.dismiss()
+        }
+        binding.everyYearBtn.setOnClickListener {
+            regular = binding.everyYearBtn.text.toString()
+            this.binding.regularBtn.text = regular
+            dialog.dismiss()
+        }
         binding.cancelBtn.setOnClickListener {
             dialog.dismiss()
         }
@@ -72,7 +87,7 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
                         regular = regularBtn.text.toString()
                     )
                     App.appDataDataBase.taskDao().update(model)
-                }  else {
+                } else {
                     val model =
                         TaskModel(task = taskEd.text.toString(), date = date, regular = regular)
                     App.appDataDataBase.taskDao().insert(model)
